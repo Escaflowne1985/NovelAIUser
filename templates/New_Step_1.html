@@ -296,19 +296,6 @@
                             <div class="box-content">
                                 <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper" role="grid">
                                     <div class="row-fluid"></div>
-                                    {% csrf_token %}
-                                    <div class="control-group">
-                                        <label class="control-label" for="focusedInput">选择要保存的文章目录</label>
-                                        <div class="controls">
-                                            <select name="task_id">
-                                                {% for option in task_list %}
-                                                <option value="{{ option.id }}" name="task_id">
-                                                    {{ option.type}}/{{ option.en_name}}
-                                                </option>
-                                                {% endfor %}
-                                            </select>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                             <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper" role="grid">
@@ -318,6 +305,13 @@
                                        id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info">
                                     <thead>
                                     <tr role="row">
+                                        <th class="sorting_asc" role="columnheader" tabindex="0"
+                                            aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                                            aria-sort="ascending"
+                                            aria-label="Username: activate to sort column descending"
+                                            style="width: 249px;">
+                                            任务ID
+                                        </th>
                                         <th class="sorting_asc" role="columnheader" tabindex="0"
                                             aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                                             aria-sort="ascending"
@@ -335,9 +329,12 @@
                                     </thead>
                                     <tbody role="alert" aria-live="polite" aria-relevant="all">
                                     {% for each in json_content_start%}
-                                    <form method="POST" action="">
+                                    <form method="POST" action="{%url 'Step_1_1_View'%}">
                                         {% csrf_token %}
                                         <tr class="odd">
+                                            <td class="sorting_1">
+                                                <textarea readonly name="task_id_" rows="2">{{task_data.id}}</textarea>
+                                            </td>
                                             <td class="sorting_1">
                                                 <textarea name="content_start" rows="2">{{each}}</textarea>
                                             </td>
@@ -357,6 +354,33 @@
         </div>
     </div>
 </div>
+<script>
+
+    // 获取表格对象
+    var table = document.getElementById("DataTables_Table_0");
+    // 获取描述列所在的索引
+    var columnIndex = 0; // 假设描述列是第一列，索引为0
+    // 将表格的行转换为数组
+    var rows = Array.from(table.getElementsByTagName("tr"));
+    // 排除表头行
+    var dataRows = rows.slice(1);
+    // 根据描述列的值进行排序
+    dataRows.sort(function (a, b) {
+        var valueA = a.getElementsByTagName("td")[columnIndex].textContent;
+        var valueB = b.getElementsByTagName("td")[columnIndex].textContent;
+        return valueA.localeCompare(valueB, undefined, {numeric: true, sensitivity: 'base'});
+    });
+    // 清空表格内容
+    while (table.rows.length > 0) {
+        table.deleteRow(0);
+    }
+    // 将排序后的行重新添加到表格中
+    dataRows.forEach(function (row) {
+        table.appendChild(row);
+    });
+
+
+</script>
 {% endblock %}
 
 

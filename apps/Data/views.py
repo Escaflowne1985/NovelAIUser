@@ -74,15 +74,16 @@ class New_Step_1_View(View):
 class Step_1_1_View(View):
     def get(self, request):
         task_id = request.GET.get('task_id')
-        step_3_1_fuction(num=task_id)
+        task_data = Task.objects.filter(id=int(task_id))[0]
+        step_3_1_fuction(task_id)
         json_content_start = eval(Task.objects.filter(id=task_id)[0].content_start_json)
-        json_content_start = [i for i in json_content_start if len(i)>10]
+        json_content_start = [i for i in json_content_start if len(i)]
         return render(request, 'New_Step_1.html', locals())
 
     def post(self, request):
-        task_id = request.POST.get('task_id')
+        task_id = request.POST.get('task_id_')
         content_start = request.POST.get('content_start')
-        Task.objects.filter(id=task_id).update(content_start=content_start)
+        Task.objects.filter(id=int(task_id)).update(content_start=content_start)
         return render(request, 'New_Step_1.html', locals())
 
 
