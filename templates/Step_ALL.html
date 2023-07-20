@@ -1,0 +1,49 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+{% block data %}
+
+<div class="row-fluid sortable ui-sortable">
+    <div class="box span9" style="">
+
+
+        <div class="box-header">
+            <h2><i class="halflings-icon white font"></i><span class="break"></span>Step7 批量睡觉完成</h2>
+        </div>
+        <div class="box-content">
+            <div class="row-fluid">
+                <div class="span10">
+                    <h2>使用说明</h2>
+                    <p>1.确保已经开启的web服务，即执行打开【开启Web服务.bat】</p>
+                    <p>2.确保已经完成了上面的setp1的文本处理</p>
+                    <p>3.确保配置已经你配置好，中间出问题会卡主</p>
+                    <p>4.自动执行admin后台中标记未完成的数据</p>
+                    <p>5.机器不好的不要点</p>
+                </div>
+            </div>
+            <div class="row-fluid sortable ui-sortable">
+                <a href="{% url 'Step_All_View'%}" class="btn btn-primary">执行操作</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="box span3">
+        <div class="box-header" data-original-title="">
+            <h2><i class="halflings-icon white list"></i><span class="break"></span>常用</h2>
+        </div>
+        <div class="box-content">
+            <ol>
+                <li><a href="http://datayang.cn:9999/xadmin" class="btn btn-primary">云管理后台</a></li>
+                <li><a href="http://127.0.0.1/xadmin" class="btn btn-primary">本地管理后台</a></li>
+                <li><a href="https://azure.microsoft.com/zh-cn/products/cognitive-services/text-to-speech/"
+                       class="btn btn-primary">微软TTS</a></li>
+                <li>
+                    <a href="https://auth.zhishuyun.com/auth/login?inviter_id=501cdcee-9887-4837-98a0-580df563add8&redirect=https://data.zhishuyun.com"
+                       class="btn btn-primary">知数云</a></li>
+                <li><a href="https://chat.openai.com/" class="btn btn-primary">ChatGPT</a></li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

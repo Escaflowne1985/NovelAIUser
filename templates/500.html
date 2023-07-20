@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>使用出现错误，请依次按照下面的步骤检查</h1>
+<p><a href="https://datayang.blog.csdn.net/article/details/130909870">【NovelAI 小说SD批量生成 文生图】Web版环境配置和使用方法</a>，点击这里查看教程一定要看。
+</p>
+<h1>检查步骤</h1>
+<h2>云环境检查</h2>
+<p><a href="http://datayang.cn:9999/xadmin">点击这里登录管理后台，用户名和密码找管理员获取</a></p>
+<p>依次检查下面的配置，要保证都能看到自己的配置。所有配置需要新增保存之后才能看到</p>
+<li> GPT35（必须保存）</li>
+<li> TTS（必须保存）</li>
+<li> SD绘画（必须保存）</li>
+<li> 剪映（必须保存）</li>
+<h2>本地环境检查</h2>
+<p>进入项目下 apps/Data/ 使用 <a href="https://safe.51xiazai.cn/huajunsafe/Notepad8.1.9.exe">notepad++</a> data_set.py</p>
+<li> 账号用户QQ,密码123456</li>
+<li> GPTkey,按照文档上的链接进入自己的后台复制，key必须和云设置一直，否则无法使用</li>
+<li> TTS,付费购买字数额度的用户不需要填，使用自己的登录后台复制自己的key</li>
+<p>打开自己的SD检查</p>
+<li>更新到最新版本，在版本管理中检查选择 2023年第18周-1.1.0版本</li>
+<li>确保你的SD模型和VAE模型能够正常加载</li>
+<li>确保高级选项中的启用API是启用状态</li>
+<h1>其他问题解决办法</h1>
+<li>使用的时候关掉360这种没用的东西。</li>
+<li>点击项目文件夹下【机器识别码.bat】查机器码是否和<a href="http://datayang.cn:9999/xadmin">管理后台中用户</a>下的机器码是否一致，不一致请联系管理员</li>
+<li>尝试重启服务，关闭CMD窗口，在项目文件夹下重新点击【启动Web服务.bat】</li>
+</body>
+</html>
