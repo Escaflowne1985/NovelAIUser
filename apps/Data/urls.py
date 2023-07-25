@@ -20,6 +20,7 @@ urlpatterns = [
     path('Step_4_2_View/<int:num>/<int:index>', Step_4_2_View.as_view(),name='Step_4_2_View'),
     path('Step_4_3_View/<int:num>/<int:index>', Step_4_3_View.as_view(), name='Step_4_3_View'),
     path('Step_4_4_View/<int:num>/<int:index>', Step_4_4_View.as_view(), name='Step_4_4_View'),
+    path('Step_4_5_View/<int:num>', Step_4_5_View.as_view(), name='Step_4_5_View'),
     path('Step_2_All_View/', Step_2_All_View.as_view(), name='Step_2_All_View'),
     path('Step_3_All_View/', Step_3_All_View.as_view(), name='Step_3_All_View'),
     path("ReDraw/", ReDraw, name='ReDraw'),
