@@ -140,15 +140,63 @@
                     <p>3.在管理员给的后台中配置你的SD方法，参数较多请提前配好，并保存</p>
                     <p>4.直接点重绘就可以了</p>
                 </div>
-                <div>
-                    <a href="{% url 'Step_4_5_View' num=num%}"
-                       class="btn btn-primary">【重置】全部关键词为初始状态</a>
-                </div>
-                <hr>
-                <div>
-                    <a href="{% url 'Step_2_2_View' num=num%}"
-                       class="btn btn-primary">【生成】全部关键词</a>
-                </div>
+            </div>
+            <div class="row-fluid sortable ui-sortable">
+                <div class="box span12">
+                    <div class="box-header" data-original-title="">
+                        <h2><i class="halflings-icon white edit"></i><span class="break"></span>通用批量处理</h2>
+                    </div>
+                    <div class="box-content">
+                        <form method="POST" action="{% url 'Step_4_4_View' num=task_id index=0%}" class="form-horizontal">
+                            {% csrf_token %}
+                            <div class="control-group">
+                                <label class="control-label" for="selectError3">LoRA 模型 Prompt</label>
+                                <div class="controls">
+                                    <select id="selectError3" name="lora_choose">
+                                        {% for option in lora_list %}
+                                        <option value="{{ option.lora_en_name }}">
+                                            {{ option.lora_cn_name }}
+                                        </option>
+                                        {% endfor %}
+                                    </select>
+                                    <button type="submit" id="addButtonLoRA" onclick="refresh()" class="btn btn-primary">添加全部 LoRA</button>
+                                    <button type="submit" id="deleteButtonLoRA" onclick="refresh()" class="btn btn-primary">删除全部 LoRA</button>
+                                </div>
+                            </div>
+                        </form>
+                        <form method="POST" action="{% url 'Step_4_4_View' num=task_id index=0%}" class="form-horizontal">
+                            {% csrf_token %}
+                            <div class="control-group">
+                                <label class="control-label" for="selectError3">批量添加【前缀】 Prompt</label>
+                                <div class="controls">
+                                    <input class="input-xlarge focused" name="prefix" type="text" value="添加前缀关键词">
+                                    <button type="submit" id="addButtonPrefix" onclick="refresh()" class="btn btn-primary">添加全部前缀 Prompt</button>
+                                    <button type="submit" id="deleteButtonPrefix" onclick="refresh()" class="btn btn-primary">删除全部前缀 Prompt</button>
+                                </div>
+                            </div>
+                        </form>
+                        <form method="" action="" class="form-horizontal">
+                            <div class="control-group error">
+                                <label class="control-label" for="inputError">重置全部关键词</label>
+                                <div class="controls">
+                                    <a href="{% url 'Step_4_5_View' num=num%}"
+                                       class="btn btn-primary">【重置】全部关键词为初始状态</a>
+                                </div>
+                            </div>
+                        </form>
+                        <form method="" action="" class="form-horizontal">
+                            <div class="control-group success">
+                                <label class="control-label" for="inputSuccess">重新生成关键词</label>
+                                <div class="controls">
+                                    <div>
+                                        <a href="{% url 'Step_2_2_View' num=num%}"
+                                           class="btn btn-primary">【生成】全部关键词</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div><!--/span-->
             </div>
             <div class="row-fluid sortable ui-sortable">
                 <div class="box span12">
@@ -193,12 +241,12 @@
                                         aria-label="Date registered: activate to sort column ascending"
                                         style="width: 363px;">LoRA配置
                                     </th>
-                                    <th class="sorting" role="columnheader" tabindex="0"
-                                        aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
-                                        aria-label="Actions: activate to sort column ascending"
-                                        style="width: 422px;">
-                                        Actions
-                                    </th>
+<!--                                    <th class="sorting" role="columnheader" tabindex="0"-->
+<!--                                        aria-controls="DataTables_Table_0" rowspan="1" colspan="1"-->
+<!--                                        aria-label="Actions: activate to sort column ascending"-->
+<!--                                        style="width: 422px;">-->
+<!--                                        批量处理-->
+<!--                                    </th>-->
                                 </tr>
                                 </thead>
                                 <tbody role="alert" aria-live="polite" aria-relevant="all">
@@ -208,25 +256,42 @@
                                         <form method="POST" action="{% url 'Step_4_4_View' num=task_id index=each.index%}">
                                             {% csrf_token %}
                                             <textarea name="txt" rows="10">{{each.txt}}</textarea>
-
                                             <div class="button-container">
-                                                <button type="submit" onclick="saveAlert()" class="btn btn-primary">描述保存</button>
+                                                <button type="submit" onclick="saveAlert()" class="btn btn-primary">内容描述手动保存</button>
                                             </div>
                                         </form>
                                     </td>
                                     <td class="center">
                                         <img src="http://127.0.0.1/txt2video/{{each.img}}" alt="Image">
                                         <hr>
-                                        <div class="button-container">
-                                            <button onclick="refresh()" class="btn btn-primary">刷新图片</button>
-                                        </div>
+                                        <form method="POST" action="{% url 'Step_4_2_View' num=task_id index=each.index%}">
+                                            {% csrf_token %}
+                                            <div class="button-container">
+                                                <button type="submit" class="btn btn-primary">绘制 / 重绘图片</button>
+                                            </div>
+                                            <p>
+                                            <div class="button-container">
+                                                <button onclick="refresh()" class="btn btn-primary">刷新图片</button>
+                                            </div>
+                                        </form>
                                     </td>
                                     <td class="sorting_1">
                                         <form method="POST" action="{% url 'Step_4_4_View' num=task_id index=each.index%}">
                                             {% csrf_token %}
                                             <textarea name="prompt" rows="10">{{each.prompt}}</textarea>
                                             <div class="button-container">
-                                                <button type="submit" onclick="saveAlert()" class="btn btn-primary">正面词保存</button>
+                                                <button type="submit" onclick="saveAlert()" class="btn btn-primary">正面词手动保存</button>
+                                            </div>
+                                        </form>
+                                        <hr>
+                                        <form method="POST" action="{% url 'Step_4_3_View' num=task_id index=each.index%}">
+                                            {% csrf_token %}
+                                            <div class="button-container">
+                                                <button type="submit" class="btn btn-primary">自动重置关键词</button>
+                                            </div>
+                                            <p>
+                                            <div class="button-container">
+                                                <button onclick="refresh()" class="btn btn-primary">刷新关键词</button>
                                             </div>
                                         </form>
                                     </td>
@@ -241,7 +306,7 @@
                                     </td>
                                     <td class="center">
                                         <form method="POST" action="{% url 'Step_4_4_View' num=task_id index=each.index%}">
-                                            <p>【保存】LoRA会添加到每个Prompt最前面</p>
+                                            <p>添加LoRA到本条prompt最前面</p>
                                             {% csrf_token %}
                                             <select name="lora">
                                                 {% for option in lora_list %}
@@ -254,41 +319,9 @@
                                                 <button type="submit" onclick="saveAlert()" class="btn btn-primary">LoRA 保存</button>
                                             </div>
                                         </form>
-                                        <form method="POST" action="{% url 'Step_4_4_View' num=task_id index=each.index%}">
-                                            <p>【添加】当前LoRA到全部Prompt</p>
-                                            {% csrf_token %}
-                                            <select name="lora_add">
-                                                {% for option in lora_list %}
-                                                <option value="{{ option.lora_en_name }}">
-                                                    {{ option.lora_cn_name }}
-                                                </option>
-                                                {% endfor %}
-                                            </select>
-                                            <div class="button-container">
-                                                <button type="submit" onclick="refresh()" class="btn btn-primary">添加全部 LoRA</button>
-                                            </div>
-                                        </form>
-                                        <form method="POST" action="{% url 'Step_4_4_View' num=task_id index=each.index%}">
-                                            <p>【删除】全部Prompt中的LoRA</p>
-                                            {% csrf_token %}
-                                            <select name="lora_del">
-                                                {% for option in lora_list %}
-                                                <option value="{{ option.lora_en_name }}">
-                                                    {{ option.lora_cn_name }}
-                                                </option>
-                                                {% endfor %}
-                                            </select>
-                                            <div class="button-container">
-                                                <button type="submit" onclick="refresh()" class="btn btn-primary">剔除全部 LoRA</button>
-                                            </div>
-                                        </form>
                                     </td>
-                                    <td class="buttons-vertical">
-                                        <a href="{% url 'Step_4_3_View' num=task_id index=each.index%}"
-                                           class="btn btn-primary">自动重置关键词</a>
-                                        <a href="{% url 'Step_4_2_View' num=task_id index=each.index%}"
-                                           class="btn btn-primary">重绘图片</a>
-                                    </td>
+<!--                                    <td class="buttons-vertical">-->
+<!--                                    </td>-->
                                 </tr>
                                 {% endfor %}
                                 </tbody>
@@ -309,7 +342,6 @@
 
 
 <script>
-
     // 获取表格对象
     var table = document.getElementById("DataTables_Table_0");
     // 获取描述列所在的索引
@@ -364,5 +396,160 @@
     }
 </script>
 
+<!-- JavaScript代码，用于在按钮点击后刷新页面 -->
+<script>
+    document.querySelector('.btn-primary').addEventListener('click', function () {
+        location.reload(); // 刷新当前页面
+    });
+</script>
+<!-- JavaScript代码，增加删除LoRA全局事件 -->
+<script>
+    function addAllLoRA() {
+        // 获取表单元素
+        var form = document.querySelector('form');
+
+        // 获取选择的LoRA值
+        var selectedLORA = document.getElementById('selectError3').value;
+
+        // 创建FormData对象
+        var formData = new FormData(form);
+
+        // 添加lora_choose参数到FormData
+        formData.append('lora_choose', selectedLORA);
+
+        // 在此处添加lora_add参数并赋值为1
+        formData.append('lora_add', 'lora_add');
+
+        // 获取CSRF令牌
+        var csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+        // 添加CSRF令牌到FormData
+        formData.append('csrfmiddlewaretoken', csrfToken);
+
+        // 设置表单的action属性为添加LoRA的URL
+        form.action = "{% url 'Step_4_4_View' num=task_id index=0 %}";
+
+        // 发送POST请求
+        fetch("{% url 'Step_4_4_View' num=task_id index=0 %}", {
+            method: 'POST',
+            body: formData
+        }).then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+    }
+
+    function deleteAllLoRA() {
+        // 获取表单元素
+        var form = document.querySelector('form');
+
+        // 获取选择的LoRA值
+        var selectedLORA = document.getElementById('selectError3').value;
+
+        // 创建FormData对象
+        var formData = new FormData(form);
+
+        // 添加lora_choose参数到FormData
+        formData.append('lora_choose', selectedLORA);
+
+        // 在此处添加lora_add参数并赋值为1
+        formData.append('lora_del', 'lora_del');
+
+        // 获取CSRF令牌
+        var csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+        // 添加CSRF令牌到FormData
+        formData.append('csrfmiddlewaretoken', csrfToken);
+
+        // 设置表单的action属性为添加LoRA的URL
+        form.action = "{% url 'Step_4_4_View' num=task_id index=0 %}";
+
+        // 发送POST请求
+        fetch("{% url 'Step_4_4_View' num=task_id index=0 %}", {
+            method: 'POST',
+            body: formData
+        }).then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+    }
+
+    // 点击按钮时调用对应的函数
+    document.getElementById('addButtonLoRA').addEventListener('click', addAllLoRA);
+    document.getElementById('deleteButtonLoRA').addEventListener('click', deleteAllLoRA);
+</script>
+
+<!-- JavaScript代码，增加删除关键词前缀全局事件 -->
+<script>
+    function addAllPrefix() {
+        // 获取表单元素
+        var form = document.querySelector('form');
+
+        // 获取选择的Prefix值
+        var inputPrefix = document.querySelector('input[name="prefix"]').value;
+
+        // 创建FormData对象
+        var formData = new FormData(form);
+
+        // 添加lora_choose参数到FormData
+        formData.append('prefix', inputPrefix);
+
+        // 在此处添加lora_add参数并赋值为1
+        formData.append('prefix_add', 'prefix_add');
+
+        // 获取CSRF令牌
+        var csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+        // 添加CSRF令牌到FormData
+        formData.append('csrfmiddlewaretoken', csrfToken);
+
+        // 设置表单的action属性为添加LoRA的URL
+        form.action = "{% url 'Step_4_4_View' num=task_id index=0 %}";
+
+        // 发送POST请求
+        fetch("{% url 'Step_4_4_View' num=task_id index=0 %}", {
+            method: 'POST',
+            body: formData
+        }).then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+    }
+
+    function deleteAllPrefix() {
+        // 获取表单元素
+        var form = document.querySelector('form');
+
+        // 获取选择的Prefix值
+        var inputPrefix = document.querySelector('input[name="prefix"]').value;
+
+        // 创建FormData对象
+        var formData = new FormData(form);
+
+        // 添加lora_choose参数到FormData
+        formData.append('prefix', inputPrefix);
+
+        // 在此处添加lora_add参数并赋值为1
+        formData.append('prefix_del', 'prefix_del');
+
+        // 获取CSRF令牌
+        var csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+        // 添加CSRF令牌到FormData
+        formData.append('csrfmiddlewaretoken', csrfToken);
+
+        // 设置表单的action属性为添加LoRA的URL
+        form.action = "{% url 'Step_4_4_View' num=task_id index=0 %}";
+
+        // 发送POST请求
+        fetch("{% url 'Step_4_4_View' num=task_id index=0 %}", {
+            method: 'POST',
+            body: formData
+        }).then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+    }
+
+    // 点击按钮时调用对应的函数
+    document.getElementById('addButtonPrefix').addEventListener('click', addAllPrefix);
+    document.getElementById('deleteButtonPrefix').addEventListener('click', deleteAllPrefix);
+</script>
 
 {% endblock %}

@@ -82,10 +82,15 @@
                                     <td class="center ">{{data.cn_name}}</td>
                                     <td class="center ">{{data.len_text}}</td>
                                     <td class="center">
-                                        <a href="{% url 'Step_2_1_View' num=data.id %}" class="btn btn-primary">文案</a>
-                                        <a href="{% url 'Step_2_2_View' num=data.id %}" class="btn btn-primary">关键词</a>
-                                        <a href="{% url 'Step_2_3_View' num=data.id %}" class="btn btn-primary">配音</a>
-                                        <a href="{% url 'Step_2_4_View' num=data.id %}" class="btn btn-primary">绘图</a>
+                                        <a href="{% url 'Step_2_1_View' num=data.id %}" class="btn btn-primary">文案拆分</a>
+                                            <a href="{% url 'Step_2_2_View' num=data.id %}" class="btn btn-primary">分镜关键词</a>
+                                        <p>
+                                        <p>
+                                            <a href="{% url 'Step_2_3_View' num=data.id %}" class="btn btn-primary">TTS配音</a>
+                                            <a href="{% url 'Step_2_4_View' num=data.id %}" class="btn btn-primary">SD绘图</a>
+                                        <p>
+                                        <p>
+                                            <a href="{% url 'New_Step_3_Process_View' num=data.id %}" class="btn btn-primary">剪映配置文件</a>
                                     </td>
                                     <td class="center">
                                         <a href="{% url 'New_Step_2_Process_View' num=data.id %}" class="btn btn-primary">批量执行</a>
