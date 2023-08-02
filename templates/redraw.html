@@ -241,12 +241,12 @@
                                         aria-label="Date registered: activate to sort column ascending"
                                         style="width: 363px;">LoRA配置
                                     </th>
-<!--                                    <th class="sorting" role="columnheader" tabindex="0"-->
-<!--                                        aria-controls="DataTables_Table_0" rowspan="1" colspan="1"-->
-<!--                                        aria-label="Actions: activate to sort column ascending"-->
-<!--                                        style="width: 422px;">-->
-<!--                                        批量处理-->
-<!--                                    </th>-->
+                                    <th class="sorting" role="columnheader" tabindex="0"
+                                        aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                                        aria-label="Actions: activate to sort column ascending"
+                                        style="width: 422px;">
+                                        关键词翻译
+                                    </th>
                                 </tr>
                                 </thead>
                                 <tbody role="alert" aria-live="polite" aria-relevant="all">
@@ -278,11 +278,13 @@
                                     <td class="sorting_1">
                                         <form method="POST" action="{% url 'Step_4_4_View' num=task_id index=each.index%}">
                                             {% csrf_token %}
-                                            <textarea name="prompt" rows="10">{{each.prompt}}</textarea>
-                                            <div class="button-container">
-                                                <button type="submit" onclick="saveAlert()" class="btn btn-primary">正面词手动保存</button>
-                                            </div>
+                                            <textarea class="textArea form-control" rows="5" name="prompt">{{each.prompt}}</textarea>
+                                            <button class="updateButton btn btn-success">拆分显示</button>
+                                            <button class="undoButton btn btn-warning">撤销删除</button>
+                                            <button type="submit" onclick="saveAlert()" class="btn btn-primary">数据保存</button>
+                                            <div class="displayArea mt-2"></div>
                                         </form>
+                                        <p></p>
                                         <hr>
                                         <form method="POST" action="{% url 'Step_4_3_View' num=task_id index=each.index%}">
                                             {% csrf_token %}
@@ -320,8 +322,17 @@
                                             </div>
                                         </form>
                                     </td>
-<!--                                    <td class="buttons-vertical">-->
-<!--                                    </td>-->
+                                    <td class="center">
+                                        <form method="POST" action="{% url 'Step_4_4_View' num=task_id index=each.index%}">
+                                            {% csrf_token %}
+                                            <textarea name="translate_add" rows="4">这里写中文会自动翻译,输入之前请清空</textarea>
+                                            <button class="clearButton btn btn-secondary">清空内容,开始输入</button>
+                                            <hr>
+                                            <div class="button-container">
+                                                <button type="submit" id="addTranslatePrompt" onclick="refresh()" class="btn btn-primary">翻译/添加到正面词</button>
+                                            </div>
+                                        </form>
+                                    </td>
                                 </tr>
                                 {% endfor %}
                                 </tbody>
@@ -476,7 +487,6 @@
     document.getElementById('addButtonLoRA').addEventListener('click', addAllLoRA);
     document.getElementById('deleteButtonLoRA').addEventListener('click', deleteAllLoRA);
 </script>
-
 <!-- JavaScript代码，增加删除关键词前缀全局事件 -->
 <script>
     function addAllPrefix() {
@@ -551,5 +561,174 @@
     document.getElementById('addButtonPrefix').addEventListener('click', addAllPrefix);
     document.getElementById('deleteButtonPrefix').addEventListener('click', deleteAllPrefix);
 </script>
+<!-- JavaScript代码，关键词点击选择 -->
+<script>
+    var textAreas = document.querySelectorAll('.textArea');
+    var updateButtons = document.querySelectorAll('.updateButton');
+    var undoButtons = document.querySelectorAll('.undoButton');
+    var displayAreas = document.querySelectorAll('.displayArea');
+    var deletedSegments = [];
 
+    // 点击后保持当前位置不变
+    updateButtons.forEach(function (button) {
+        button.addEventListener('click', function (event) {
+            event.preventDefault(); // 阻止按钮的默认行为
+            // 在这里执行按钮点击后的操作，例如更新页面内容
+            displayArea.innerHTML = "Button '" + button.textContent + "' was clicked.";
+        });
+    });
+
+    undoButtons.forEach(function (button) {
+        button.addEventListener('click', function (event) {
+            event.preventDefault(); // 阻止按钮的默认行为
+            // 在这里执行按钮点击后的操作，例如更新页面内容
+            displayArea.innerHTML = "Button '" + button.textContent + "' was clicked.";
+        });
+    });
+
+    for (let i = 0; i < updateButtons.length; i++) {
+        updateButtons[i].addEventListener('click', function () {
+            updateDisplay(i);
+        });
+        undoButtons[i].addEventListener('click', function () {
+            undoDelete(i);
+        });
+    }
+
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    function updateDisplay(index) {
+        var segments = textAreas[index].value.split(',');
+        displayAreas[index].innerHTML = '';
+        var csrftoken = getCookie('csrftoken'); // 获取CSRF令牌
+
+        // segments.forEach(function (segment, i) {
+        //     var segmentDiv = document.createElement('div');
+        //
+        //     // 创建删除按钮
+        //     var deleteButton = document.createElement('button');
+        //     deleteButton.textContent = '删除';
+        //     deleteButton.className = 'btn btn-primary mr-2';
+        //     deleteButton.onclick = function () {
+        //         deletedSegments[index] = {segment, i}; // 存储被删除的段落和索引
+        //         segments.splice(i, 1);
+        //         textAreas[index].value = segments.join(',');
+        //         updateDisplay(index); // 重新显示
+        //     };
+        //     segmentDiv.appendChild(deleteButton);
+        //
+        //     var segmentText = document.createTextNode(segment);
+        //     segmentDiv.appendChild(segmentText);
+        //     segmentDiv.className = 'alert alert-success';
+        //
+        //     displayAreas[index].appendChild(segmentDiv);
+        // });
+        segments.forEach(function (segment, i) {
+            // 调用后端进行翻译
+            fetch('/Translate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken // 添加CSRF令牌到请求头
+                },
+                body: JSON.stringify({text: segment}) // 发送要翻译的文本
+            })
+                .then(response => response.json())
+                .then(data => {
+                    var segmentDiv = document.createElement('div');
+                    console.log(data); // 打印整个响应对象
+                    // 创建删除按钮
+                    var deleteButton = document.createElement('button');
+                    deleteButton.textContent = '删除';
+                    deleteButton.className = 'btn btn-danger';
+                    deleteButton.onclick = function () {
+                        deletedSegments[index] = {segment, i};
+                        segments.splice(i, 1);
+                        textAreas[index].value = segments.join(',');
+                        updateDisplay(index);
+                    };
+                    segmentDiv.appendChild(deleteButton);
+
+                    var translatedSegment = document.createTextNode(data.translatedText); // 假设翻译的文本返回在translated_text键下
+                    segmentDiv.appendChild(translatedSegment);
+
+                    displayAreas[index].appendChild(segmentDiv);
+                });
+        });
+    }
+
+    function undoDelete(index) {
+        if (deletedSegments[index]) {
+            var segments = textAreas[index].value.split(',');
+            var {segment, i} = deletedSegments[index];
+            segments.splice(i, 0, segment);
+            textAreas[index].value = segments.join(',');
+            updateDisplay(index); // 重新显示
+            deletedSegments[index] = null; // 清空撤销记录
+        }
+    }
+
+    // 翻译部分
+    var translateButtons = document.querySelectorAll('.translateButton');
+
+    for (let i = 0; i < translateButtons.length; i++) {
+        translateButtons[i].addEventListener('click', function () {
+            translateText(i);
+        });
+    }
+
+    // function translateText(index) {
+    //     var textToTranslate = textAreas[index].value;
+    //     alert(textToTranslate);
+    //     // 发送fetch请求到后端进行翻译
+    //     fetch('Translate', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //         body: JSON.stringify({text: textToTranslate})
+    //     })
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             textAreas[index].value = data.translatedText; // 更新文本框
+    //             updateDisplay(index); // 重新显示
+    //         });
+    // }
+</script>
+<!-- 单元格清空,添加删除翻译 -->
+<script>
+    // 获取所有清空按钮
+    var clearButtons = document.querySelectorAll('.clearButton');
+
+    clearButtons.forEach(function (button) {
+        button.addEventListener('click', function (event) {
+            event.preventDefault(); // 阻止按钮的默认行为
+            // 在这里执行按钮点击后的操作，例如更新页面内容
+            displayArea.innerHTML = "Button '" + button.textContent + "' was clicked.";
+        });
+    });
+
+    // 为每个清空按钮添加点击事件
+    clearButtons.forEach(function (button) {
+        button.addEventListener('click', function () {
+            // 获取相邻的textarea元素
+            var textarea = button.previousElementSibling;
+            // 清空textarea的内容
+            textarea.value = '';
+        });
+    });
+</script>
 {% endblock %}

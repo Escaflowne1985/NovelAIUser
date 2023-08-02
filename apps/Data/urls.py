@@ -26,4 +26,5 @@ urlpatterns = [
     path("ReDraw/", ReDraw, name='ReDraw'),
     path("Prompt/", Prompt, name='Prompt'),
     path("Prompt_View", Prompt_View.as_view(), name='Prompt_View'),
+    path("Translate", Translate.as_view(), name='Translate'),
 ]
