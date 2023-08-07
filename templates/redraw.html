@@ -395,6 +395,15 @@
 </script>
 
 <script>
+    // 阻止表单的默认提交行为
+    document.getElementById('myForm').addEventListener('submit', function (event) {
+        var submitButton = event.submitter;
+        // 如果提交按钮上有data-submit-button属性，表示已经进行了表单提交
+        if (submitButton && submitButton.getAttribute('data-submit-button') === 'true') {
+            event.preventDefault(); // 阻止表单的默认提交行为
+        }
+    });
+
     function refresh() {
         localStorage.setItem('scrollPosition', window.pageYOffset || document.documentElement.scrollTop);
         window.location.reload();
