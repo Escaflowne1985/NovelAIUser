@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'reversion',  # 为模型通过版本设置提供数据回滚功能
     'DjangoUeditor',  # 富文本编辑器
     'Data',
+    'Data1',
     'Config',
 ]
 
