@@ -28,7 +28,8 @@ from django.conf import settings
 urlpatterns = [
     path('xadmin/', xadmin.site.urls),
     path('', include('Data.urls')),
-    path('', include('Data1.urls')，    path("", Home, name='Home'),  # 主页
+    path('', include('Data1.urls'))，    
+    path("", Home, name='Home'),  # 主页
     url(r'^static/(?P<path>.*)$', static.serve, {'document_root': settings.STATIC_ROOT}, name='static'),
     url(r'^media/(?P<path>.*)$', static.serve, {'document_root': settings.MEDIA_ROOT}, name='media'),
     url(r'^txt2video/(?P<path>.*)$', static.serve, {'document_root': settings.TXT2VIDEO}, name='txt2video'),
