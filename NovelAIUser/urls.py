@@ -19,6 +19,7 @@ import xadmin
 from django.urls import path, re_path
 from django.urls import include
 from Data.views import *
+from Data1.views import *
 from Config.views import *
 from django.views import static
 from django.conf.urls import url
@@ -27,6 +28,7 @@ from django.conf import settings
 urlpatterns = [
     path('xadmin/', xadmin.site.urls),
     path('', include('Data.urls')),
+    path('', include('Data1.urls')),
     path("", Home, name='Home'),  # 主页
     url(r'^static/(?P<path>.*)$', static.serve, {'document_root': settings.STATIC_ROOT}, name='static'),
     url(r'^media/(?P<path>.*)$', static.serve, {'document_root': settings.MEDIA_ROOT}, name='media'),
