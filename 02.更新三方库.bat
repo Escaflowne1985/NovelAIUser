@@ -3,4 +3,5 @@
 ..\myenv\Scripts\pip.exe install opencv-python
 ..\myenv\Scripts\pip.exe install ffmpeg
 ..\myenv\Scripts\pip.exe install moviepy
+..\myenv\Scripts\pip.exe install scenedetect[opencv] --upgrade
 pause

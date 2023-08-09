@@ -27,3 +27,8 @@ class Video_Step_Add_View(View):
     def get(self, request):
         video_base_add_function()
         return render(request, 'Video_Step_Base.html', locals())
+
+class Video_Step_RandomCut_View(View):
+    def get(self, request):
+        video_base_random_cut_function()
+        return render(request, 'Video_Step_Base.html', locals())

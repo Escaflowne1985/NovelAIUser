@@ -165,3 +165,5 @@ class FrameProcess(models.Model):
     class Meta:
         verbose_name = "插帧/补帧设置"
         verbose_name_plural = verbose_name
+
+

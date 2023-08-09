@@ -10,4 +10,5 @@ urlpatterns = [
     path('Video_Step_Base_View', Video_Step_Base_View.as_view(), name='Video_Step_Base_View'),
     path('Video_Step_Insert_View', Video_Step_Insert_View.as_view(), name='Video_Step_Insert_View'),
     path('Video_Step_Add_View', Video_Step_Add_View.as_view(), name='Video_Step_Add_View'),
+    path('Video_Step_RandomCut_View', Video_Step_RandomCut_View.as_view(), name='Video_Step_RandomCut_View'),
 ]
