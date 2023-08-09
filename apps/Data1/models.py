@@ -95,11 +95,11 @@ class VideoBaseSetting(models.Model):
 
     scale_x = models.IntegerField(
         default=100,
-        verbose_name="自定义分辨率宽", help_text="只有视频分辨率选择自定义才会生效"
+        verbose_name="自定义分辨率宽（宽）", help_text="只有视频分辨率选择自定义才会生效"
     )
     scale_y = models.IntegerField(
         default=100,
-        verbose_name="自定义分辨率宽", help_text="只有视频分辨率选择自定义才会生效"
+        verbose_name="自定义分辨率宽（高）", help_text="只有视频分辨率选择自定义才会生效"
     )
 
     transpose = models.CharField(
