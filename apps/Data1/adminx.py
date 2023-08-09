@@ -16,7 +16,7 @@ class VideoBaseSettingAdmin(object):
                 Fieldset('画面设置', Row('brightness_num', 'saturation_num', 'contrast_num')),
                 Fieldset('锐化设置', 'unsharp_l_amount', Row('unsharp_l_msize_x', 'unsharp_l_msize_y')),
                 Fieldset('降噪设置', Row('hqdn3d_luma_spatial', 'hqdn3d_chroma_spatia'), Row('hqdn3d_luma_tmp', 'hqdn3d_chroma_tmp')),
-                Fieldset('分辨率设置', 'scale', 'transpose'),
+                Fieldset('分辨率设置', 'scale', Row('scale_x', 'scale_y'), 'transpose'),
                 Fieldset('抽帧设置', 'frame_set', Row('frame_set_max', 'frame_set_min')),
                 # Fieldset(None, 'content_start_json', **{"style": "display:None"}),
             )
@@ -26,7 +26,7 @@ class VideoBaseSettingAdmin(object):
                 Fieldset('画面设置', Row('brightness_num', 'saturation_num', 'contrast_num')),
                 Fieldset('锐化设置', 'unsharp_l_amount', Row('unsharp_l_msize_x', 'unsharp_l_msize_y')),
                 Fieldset('降噪设置', Row('hqdn3d_luma_spatial', 'hqdn3d_chroma_spatia'), Row('hqdn3d_luma_tmp', 'hqdn3d_chroma_tmp')),
-                Fieldset('分辨率设置', 'scale', 'transpose'),
+                Fieldset('分辨率设置', 'scale', Row('scale_x', 'scale_y'), 'transpose'),
                 Fieldset('抽帧设置', 'frame_set', Row('frame_set_max', 'frame_set_min')),
                 # Fieldset(None, 'content_start_json', **{"style": "display:None"}),
             )

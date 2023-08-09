@@ -84,12 +84,22 @@ class VideoBaseSetting(models.Model):
     scale = models.CharField(
         max_length=20, default="",
         choices=(
-            ("480P", "480P"),
-            ("720P", "720P"),
-            ("1080P", "1080P"),
+            ("480P", "480P(横版)"),
+            ("720P", "720P(横版)"),
+            ("1080P", "1080P(横版)"),
             ("横竖互换", "横竖互换"),
+            ("自定义", "自定义"),
         ),
         verbose_name="视频分辨率"
+    )
+
+    scale_x = models.IntegerField(
+        default=100,
+        verbose_name="自定义分辨率宽", help_text="只有视频分辨率选择自定义才会生效"
+    )
+    scale_y = models.IntegerField(
+        default=100,
+        verbose_name="自定义分辨率宽", help_text="只有视频分辨率选择自定义才会生效"
     )
 
     transpose = models.CharField(
@@ -155,4 +165,3 @@ class FrameProcess(models.Model):
     class Meta:
         verbose_name = "插帧/补帧设置"
         verbose_name_plural = verbose_name
-
