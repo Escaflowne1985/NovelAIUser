@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic.base import View
 import json
 from .models import *
+from Data2.models import *
 from django.shortcuts import redirect
 from Config.models import *
 from django.urls import reverse
@@ -49,6 +50,9 @@ def GlobalInit(request):
     task = Task.objects.all().values('id', 'type', 'en_name', 'cn_name', 'len_text')
     task_list = Task.objects.filter(status="未完成")
     lora_list = LoraModels.objects.all()
+
+    task_movie = MovieTask.objects.all().values('id', 'type', 'en_name', 'cn_name')
+    task_movie_list = MovieTask.objects.filter(status="未完成")
     return locals()
 
 

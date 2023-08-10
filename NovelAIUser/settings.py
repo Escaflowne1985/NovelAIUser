@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'DjangoUeditor',  # 富文本编辑器
     'Data',
     'Data1',
+    'Data2',
+    'Utils',
     'Config',
 ]
 
