@@ -62,3 +62,24 @@ class Movie_Step_Each_2_View(View):
     def post(self, request, num, index):
         movie_audio_each_save_function(num, index)
         return render(request, 'Movie_Step_Base.html', locals())
+
+
+# 删除MovieTaskEach对应的记录和音频文件
+class Movie_Step_Each_3_View(View):
+    def get(self, request, num, index):
+        data_list = MovieTask.objects.filter(id=num).first()
+        type_path = data_list.type
+        en_name = data_list.en_name
+
+        # 删除记录
+        records_to_delete = MovieTaskEach.objects.filter(task_id=num, index=index)
+        records_to_delete.delete()
+
+        # 删除制定wav文件
+        del_wav_path = os.path.join(BASE_DIR, "MovieProcess", "result", type_path, en_name, "each_audio_wav", str(index) + ".wav")
+        try:
+            os.remove(del_wav_path)
+        except:
+            pass
+
+        return render(request, 'Movie_Step_Base.html')

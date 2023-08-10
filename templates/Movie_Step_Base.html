@@ -203,6 +203,9 @@
                                             </div>
                                             <p>
                                         </form>
+                                        <div class="button-container">
+                                            <a href="{% url 'Movie_Step_Each_3_View' num=task_id index=each.index%}" class="btn btn-primary">删除该条记录</a>
+                                        </div>
                                     </td>
                                 </tr>
                                 {% endfor %}

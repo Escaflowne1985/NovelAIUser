@@ -14,5 +14,5 @@ urlpatterns = [
     path('Movie_Step_4_View/<int:num>', Movie_Step_4_View.as_view(), name='Movie_Step_4_View'),
     path('Movie_Step_Each_1_View//<int:num>/<int:index>', Movie_Step_Each_1_View.as_view(), name='Movie_Step_Each_1_View'),
     path('Movie_Step_Each_2_View/<int:num>/<int:index>', Movie_Step_Each_2_View.as_view(), name='Movie_Step_Each_2_View'),
-
+    path('Movie_Step_Each_3_View/<int:num>/<int:index>', Movie_Step_Each_3_View.as_view(), name='Movie_Step_Each_3_View'),
 ]
