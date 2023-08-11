@@ -46,7 +46,7 @@
 
 # 软件更新日志
 
-[更新日志直接查看这里](https://github.com/Escaflowne1985/NovelAIUser/blob/master/%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97.md)
+[更新日志直接查看这里](https://github.com/Escaflowne1985/NovelAIUser/blob/master/ReadDocument/%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97.md)
 
 每次更新的内容都会有简单的描述。
 
