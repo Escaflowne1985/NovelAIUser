@@ -20,7 +20,15 @@
 
 # 使用说明
 
-待更新
+[环境安装与更新](https://github.com/Escaflowne1985/NovelAIUser/blob/master/ReadDocument/02.%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%E4%B8%8E%E6%9B%B4%E6%96%B0.md)
+
+[本地和云端配置](https://github.com/Escaflowne1985/NovelAIUser/blob/master/ReadDocument/03.%E6%9C%AC%E5%9C%B0%E5%92%8C%E4%BA%91%E7%AB%AF%E9%85%8D%E7%BD%AE.md)
+
+[【教程】SD图文转视频](https://github.com/Escaflowne1985/NovelAIUser/blob/master/ReadDocument/%E3%80%90%E6%95%99%E7%A8%8B%E3%80%91SD%E5%9B%BE%E6%96%87%E8%BD%AC%E8%A7%86%E9%A2%91.md)
+
+[【教程】视频批量处理](https://github.com/Escaflowne1985/NovelAIUser/blob/master/ReadDocument/%E3%80%90%E6%95%99%E7%A8%8B%E3%80%91%E8%A7%86%E9%A2%91%E6%89%B9%E9%87%8F%E5%A4%84%E7%90%86.md)
+
+[【教程】视频解说克隆](https://github.com/Escaflowne1985/NovelAIUser/blob/master/ReadDocument/%E3%80%90%E6%95%99%E7%A8%8B%E3%80%91%E8%A7%86%E9%A2%91%E8%A7%A3%E8%AF%B4%E5%85%8B%E9%9A%86.md)
 
 # Python虚拟环境
 从管理员处获取python的虚拟环境目录。确保你的环境目录是这样的。
@@ -46,7 +54,7 @@
 
 # 软件更新日志
 
-[更新日志直接查看这里](https://github.com/Escaflowne1985/NovelAIUser/blob/master/ReadDocument/%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97.md)
+[更新日志直接查看这里](https://github.com/Escaflowne1985/NovelAIUser/blob/master/ReadDocument/01.%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97.md)
 
 每次更新的内容都会有简单的描述。
 
