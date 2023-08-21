@@ -50,7 +50,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </a>
-            <a class="brand"><span>AI绘画</span></a>
+            <a class="brand"><span>NovelAI 视频自动剪辑</span></a>
             <!--主页菜单-->
             <div class="nav-no-collapse header-nav">
                 <ul class="nav pull-right">
@@ -75,7 +75,20 @@
             <div class="nav-collapse sidebar-nav">
                 <ul class="nav nav-tabs nav-stacked main-menu">
                     <li>
-                        <a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">文生图</span>
+                        <a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">关键词</span>
+                            <span class="label label-important"> 1 </span></a>
+                        <ul>
+                            <li>
+                                <a href="{% url 'Prompt' %}"><i class="icon-tasks"></i>
+                                    <span class="hidden-tablet"> 关键词</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav nav-tabs nav-stacked main-menu">
+                    <li>
+                        <a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">SD图文转视频</span>
                             <span class="label label-important"> 4 </span></a>
                         <ul>
                             <li>
@@ -105,20 +118,7 @@
                 </ul>
                 <ul class="nav nav-tabs nav-stacked main-menu">
                     <li>
-                        <a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">关键词</span>
-                            <span class="label label-important"> 1 </span></a>
-                        <ul>
-                            <li>
-                                <a href="{% url 'Prompt' %}"><i class="icon-tasks"></i>
-                                    <span class="hidden-tablet"> 关键词</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-                <ul class="nav nav-tabs nav-stacked main-menu">
-                    <li>
-                        <a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">视频处理</span>
+                        <a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">视频批量处理</span>
                             <span class="label label-important"> 1 </span></a>
                         <ul>
                             <li>
@@ -131,7 +131,7 @@
                 </ul>
                 <ul class="nav nav-tabs nav-stacked main-menu">
                     <li>
-                        <a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">影视处理</span>
+                        <a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">影视解说克隆</span>
                             <span class="label label-important"> 1 </span></a>
                         <ul>
                             <li>
