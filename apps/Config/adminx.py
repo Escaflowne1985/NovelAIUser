@@ -1,6 +1,8 @@
 import xadmin
 from Data.models import *
 from .models import *
+from Data1.models import *
+from Data2.models import *
 from xadmin.layout import *
 from xadmin import views
 
@@ -25,20 +27,29 @@ class GlobalSettings(object):
     menu_style = "accordion"
 
     def get_site_menu(self):
-        DataMenu = {'title': '内容管理', 'menus': (
+        DataMenu = {'title': '漫剪内容管理', 'menus': (
             {'title': '文章数据', 'icon': 'fa fa-user-o', 'url': self.get_model_url(Task, 'changelist')},
             {'title': 'Lora管理', 'icon': 'fa fa-user-o', 'url': self.get_model_url(LoraModels, 'changelist')},
         )}
-        UserMenu = {'title': '数据管理', 'menus': (
-            {'title': '验证信息', 'icon': 'fa fa-user-o', 'url': self.get_model_url(UserInfo, 'changelist')},
+        Data2Menu = {'title': '影视内容管理', 'menus': (
+            {'title': '视频数据', 'icon': 'fa fa-user-o', 'url': self.get_model_url(MovieTask, 'changelist')},
+        )}
+        ConfigMenu = {'title': '配置管理', 'menus': (
+            {'title': '用户验证信息', 'icon': 'fa fa-user-o', 'url': self.get_model_url(UserInfo, 'changelist')},
+            {'title': '系统环境路径', 'icon': 'fa fa-user-o', 'url': self.get_model_url(PythonEnv, 'changelist')},
             {'title': 'GPT_知数云', 'icon': 'fa fa-user-o', 'url': self.get_model_url(GPT_ZSY, 'changelist')},
             {'title': 'GPT_OPENAI', 'icon': 'fa fa-user-o', 'url': self.get_model_url(GPT_OPENAI, 'changelist')},
             {'title': 'GPT_CLOSEAI', 'icon': 'fa fa-user-o', 'url': self.get_model_url(GPT_CLOSEAI, 'changelist')},
             {'title': 'GPT_MICROSOFT', 'icon': 'fa fa-user-o', 'url': self.get_model_url(GPT_MICROSOFT, 'changelist')},
             {'title': 'TTS_MICROSOFT', 'icon': 'fa fa-user-o', 'url': self.get_model_url(TTS_MICROSOFT, 'changelist')},
         )}
+        UserMenu = {'title': '视频处理', 'menus': (
+            {'title': '基本处理配置', 'icon': 'fa fa-user-o', 'url': self.get_model_url(VideoBaseSetting, 'changelist')},
+            {'title': '插帧/补帧设置', 'icon': 'fa fa-user-o', 'url': self.get_model_url(FrameProcess, 'changelist')},
 
-        return (DataMenu, UserMenu)
+        )}
+
+        return (ConfigMenu, DataMenu, Data2Menu, UserMenu)
 
 
 class LoraModelsAdmin(object):
@@ -76,6 +87,11 @@ class TTS_MICROSOFTAdmin(object):
     show_bookmarks = False
 
 
+class PythonEnvAdmin(object):
+    list_display = ['python_env_path', 'whisper_model']
+    show_bookmarks = False
+
+
 xadmin.site.register(views.CommAdminView, GlobalSettings)  # 全局设置加载
 xadmin.site.register(views.BaseAdminView, BaseSetting)  # 注册主体风格切换
 xadmin.site.register(LoraModels, LoraModelsAdmin)
@@ -85,3 +101,4 @@ xadmin.site.register(GPT_OPENAI, GPT_OPENAIAdmin)
 xadmin.site.register(GPT_CLOSEAI, GPT_CLOSEAIAdmin)
 xadmin.site.register(GPT_MICROSOFT, GPT_MICROSOFTAdmin)
 xadmin.site.register(TTS_MICROSOFT, TTS_MICROSOFTAdmin)
+xadmin.site.register(PythonEnv, PythonEnvAdmin)

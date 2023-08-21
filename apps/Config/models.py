@@ -92,3 +92,27 @@ class TTS_MICROSOFT(models.Model):
     class Meta:
         verbose_name = "微软 文本转语音 key，一条数据一个"
         verbose_name_plural = verbose_name
+
+
+class PythonEnv(models.Model):
+    python_env_path = models.CharField(
+        max_length=255,
+        default="这里修改成你 myenv 的路径",
+        help_text='例如 H:/MyGitProject/NovelAI/UserEdition/sell_NovelAI_txt2video_web/myenv'
+    )
+    whisper_model = models.CharField(
+        max_length=20, default="large",
+        choices=(
+            ("large-v2", "large-v2 需要 14 GB"),
+            ("large-v1", "large-v1 需要12 GB"),
+            ("large", "large 需要 10 GB"),
+            ("medium", "medium 需要 5 GB"),
+            ("small", "small 需要 2 GB"),
+            ("base", "base 需要 1 GB"),
+        ),
+        verbose_name="语音转文本模型", help_text="根据自己的显存选择"
+    )
+
+    class Meta:
+        verbose_name = "这里设置myenv的路径"
+        verbose_name_plural = verbose_name
