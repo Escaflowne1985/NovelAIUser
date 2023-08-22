@@ -7,7 +7,7 @@ from .views import *
 
 urlpatterns = [
     path('New_Step_1_View', New_Step_1_View.as_view(), name='New_Step_1_View'),
-    path('Step_1_1_View/', Step_1_1_View.as_view(), name='Step_1_1_View'),
+    path('New_Step_1_1_View/', New_Step_1_1_View.as_view(), name='New_Step_1_1_View'),
     path('New_Step_2_View', New_Step_2_View.as_view(), name='New_Step_2_View'),
     path('New_Step_2_Process_View/<int:num>', New_Step_2_Process_View.as_view(), name='New_Step_2_Process_View'),
     path('Step_2_1_View/<int:num>', Step_2_1_View.as_view(), name='Step_2_1_View'),

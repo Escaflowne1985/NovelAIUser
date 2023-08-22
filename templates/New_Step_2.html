@@ -20,6 +20,7 @@
                         </button>
                     </p>
                     <p>5.点击你要执行的任务按钮，在命令行窗口查看执行过程，如果觉得卡主可以再次执行。</p>
+                    <p>6.如果剪映中没有生成文件请检查稿件切分是否有小于1秒的片段。</p>
                 </div>
                 <div class="row-fluid sortable ui-sortable">
                     <a href="{% url 'Step_2_All_View'%}" class="btn btn-primary">全部执行未处理标记内容</a>
@@ -83,7 +84,7 @@
                                     <td class="center ">{{data.len_text}}</td>
                                     <td class="center">
                                         <a href="{% url 'Step_2_1_View' num=data.id %}" class="btn btn-primary">文案拆分</a>
-                                            <a href="{% url 'Step_2_2_View' num=data.id %}" class="btn btn-primary">分镜关键词</a>
+                                        <a href="{% url 'Step_2_2_View' num=data.id %}" class="btn btn-primary">分镜关键词</a>
                                         <p>
                                         <p>
                                             <a href="{% url 'Step_2_3_View' num=data.id %}" class="btn btn-primary">TTS配音</a>

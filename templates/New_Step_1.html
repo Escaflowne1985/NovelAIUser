@@ -263,7 +263,7 @@
                         <h2><i class="halflings-icon white edit"></i><span class="break"></span>黄金文案配置</h2>
                     </div>
                     <div class="box-content">
-                        <form class="form-horizontal" method="get" action="{% url 'Step_1_1_View'%}">
+                        <form class="form-horizontal" method="get" action="{% url 'New_Step_1_1_View'%}">
                             {% csrf_token %}
                             <div class="box-content">
                                 <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper" role="grid">
@@ -293,7 +293,7 @@
                         <h2><i class="halflings-icon white edit"></i><span class="break"></span>黄金文案配置</h2>
                     </div>
                     <div class="box-content">
-                        <form class="form-horizontal" method="post" action="{% url 'Step_1_1_View'%}">
+                        <form class="form-horizontal" method="post" action="{% url 'New_Step_1_1_View'%}">
                             <div class="box-content">
                                 <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper" role="grid">
                                     <div class="row-fluid"></div>
@@ -329,8 +329,9 @@
                                     </tr>
                                     </thead>
                                     <tbody role="alert" aria-live="polite" aria-relevant="all">
+                                    </tbody>
                                     {% for each in json_content_start%}
-                                    <form method="POST" action="{%url 'Step_1_1_View'%}">
+                                    <form method="POST" action="{%url 'New_Step_1_1_View'%}">
                                         {% csrf_token %}
                                         <tr class="odd">
                                             <td class="sorting_1">
@@ -345,7 +346,7 @@
                                         </tr>
                                     </form>
                                     {% endfor %}
-                                    </tbody>
+
                                 </table>
                             </div>
                         </form>

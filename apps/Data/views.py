@@ -61,6 +61,7 @@ def Home(request):
     return render(request, 'base.html', locals())
 
 
+# LoRA人物配置
 class New_Step_1_View(View):
     def get(self, request):
         return render(request, 'New_Step_1.html', locals())
@@ -70,11 +71,12 @@ class New_Step_1_View(View):
         return redirect('New_Step_1_View')
 
 
-class Step_1_1_View(View):
+# 黄金文案5秒
+class New_Step_1_1_View(View):
     def get(self, request):
         task_id = request.GET.get('task_id')
         task_data = Task.objects.filter(id=int(task_id))[0]
-        step_2_2_fuction(task_id)
+        step_1_gold_start_fuction(task_id)
         json_content_start = eval(Task.objects.filter(id=task_id)[0].content_start_json)
         json_content_start = [i for i in json_content_start if len(i) > 3]
         return render(request, 'New_Step_1.html', locals())
@@ -93,25 +95,25 @@ class New_Step_2_View(View):
 
 class Step_2_1_View(View):
     def get(self, request, num):
-        step_1_fuction(num, Task, TaskEach)
+        step_1_function(num, Task, TaskEach)
         return render(request, 'New_Step_2.html', locals())
 
 
 class Step_2_2_View(View):
     def get(self, request, num):
-        step_2_fuction(num, Task, TaskEach)
+        step_2_function(num, Task, TaskEach)
         return render(request, 'New_Step_2.html', locals())
 
 
 class Step_2_3_View(View):
     def get(self, request, num):
-        step_3_fuction(num, Task, TaskEach)
+        step_3_function(num, Task, TaskEach)
         return render(request, 'New_Step_2.html', locals())
 
 
 class Step_2_4_View(View):
     def get(self, request, num):
-        step_4_fuction(num, Task, TaskEach)
+        step_4_function(num, Task, TaskEach)
         return render(request, 'New_Step_2.html', locals())
 
 
@@ -139,7 +141,7 @@ class New_Step_3_View(View):
 class New_Step_3_Process_View(View):
     def get(self, request, num):
         step_3_process(num, Task, TaskEach)
-        return render(request, 'New_Step_3.html', locals())
+        return render(request, 'New_Step_2.html', locals())
 
 
 class Step_3_All_View(View):
@@ -174,7 +176,7 @@ class Step_4_2_View(View):
         task_id = Task.objects.filter(id=num).first().id
         type_path = Task.objects.filter(id=num).first().type
         en_name = Task.objects.filter(id=num).first().en_name
-        step_4_2_fuction(num, type_path, en_name, index, Task, TaskEach)
+        step_4_2_function(num, type_path, en_name, index, Task, TaskEach)
         # return HttpResponseRedirect(request.get_full_path())
         # return render(request, 'redraw.html', locals())
         return redirect(reverse('Step_4_1_View', args=[num]))
@@ -184,7 +186,7 @@ class Step_4_2_View(View):
         task_id = Task.objects.filter(id=num).first().id
         type_path = Task.objects.filter(id=num).first().type
         en_name = Task.objects.filter(id=num).first().en_name
-        step_4_2_fuction(num, type_path, en_name, index, Task, TaskEach)
+        step_4_2_function(num, type_path, en_name, index, Task, TaskEach)
         # return HttpResponseRedirect(request.get_full_path())
         # return render(request, 'redraw.html', locals())
         return redirect(reverse('Step_4_1_View', args=[num]))
@@ -193,11 +195,11 @@ class Step_4_2_View(View):
 # 图片关键词重新生成
 class Step_4_3_View(View):
     def get(self, request, num, index):
-        step_2_1_fuction(num, index)
+        step_2_1_function(num, index)
         return redirect(reverse('Step_4_1_View', args=[num]))
 
     def post(self, request, num, index):
-        step_2_1_fuction(num, index)
+        step_2_1_function(num, index)
         return redirect(reverse('Step_4_1_View', args=[num]))
 
 

@@ -42,13 +42,13 @@ class FrameProcessAdmin(object):
         if self.org_obj is None:
             self.form_layout = (
                 Fieldset('帧率设置', 'fps'),
-                Fieldset('插帧设置', 'frame_insert_num', 'blend_num', 'contrast_num'),
+                Fieldset('插帧设置', 'frame_insert_num', 'blend_num'),
                 Fieldset('补帧设置', 'add_min_count', 'add_max_count'),
             )
         else:
             self.form_layout = (
                 Fieldset('帧率设置', 'fps'),
-                Fieldset('插帧设置', 'frame_insert_num', 'blend_num', 'contrast_num'),
+                Fieldset('插帧设置', 'frame_insert_num', 'blend_num'),
                 Fieldset('补帧设置', 'add_min_count', 'add_max_count'),
             )
         return super(FrameProcessAdmin, self).get_form_layout()
