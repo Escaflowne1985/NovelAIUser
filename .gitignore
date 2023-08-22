@@ -1,2 +1,14 @@
 db.sqlite3
 *.pyc
+*.wav
+apps/Utils/pyx 
+apps/Utils/script
+MovieProcess/models
+MovieProcess/base
+MovieProcess/result
+VideoProcess/video/base
+VideoProcess/video/image
+VideoProcess/result
+Txt2Video/
+nsfw_model/nsfw_mobilenet_v2_140_224.zip
+nsfw_model/nsfw.299x299.h5
