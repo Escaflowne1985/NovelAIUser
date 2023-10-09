@@ -21,8 +21,14 @@
 # 使用说明
 
 [试用功能]启动web服务之后再主页会看到，需要使用QQ号注册，机器码唯一识别，注册用户赠送15天使用。
+[试用功能][画面关键词和黄金文案](http://datayang.cn:9999/User/UserGoldFreeView/)
+![在这里插入图片描述](https://m.qpic.cn/psc?/V13uuYuJ2n1EXp/6tCTPh7N*X6CBkvkDvKlZVYDpR7kqUxbMpHYHTm75mkhxoYp23MUj20DSivEYTFmJdc5FOhqm5jYfz0Ipbq7q1jGf7rr9quRrhnxaRUw1M8!/b&bo=hga*AwAAAAABBxw!&rf=viewer_4)
 
 [环境安装与更新](https://github.com/Escaflowne1985/NovelAIUser/blob/master/ReadDocument/02.%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%E4%B8%8E%E6%9B%B4%E6%96%B0.md)
+
+环境包下载地址
+[百度网盘 提取码群内获取【NovelAIUser环境包】](https://pan.baidu.com/s/1-WWk-WGQxcwv59MMaoiKdw)
+[夸克网盘 关注微信公众号回复【NovelAIUser环境包】](https://pan.quark.cn/s/ac4520e8fab6)
 
 [本地和云端配置](https://github.com/Escaflowne1985/NovelAIUser/blob/master/ReadDocument/03.%E6%9C%AC%E5%9C%B0%E5%92%8C%E4%BA%91%E7%AB%AF%E9%85%8D%E7%BD%AE.md)
 
