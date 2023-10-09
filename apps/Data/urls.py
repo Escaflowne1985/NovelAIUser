@@ -27,4 +27,5 @@ urlpatterns = [
     path("Prompt/", Prompt, name='Prompt'),
     path("Prompt_View", Prompt_View.as_view(), name='Prompt_View'),
     path("Translate", Translate.as_view(), name='Translate'),
+    path("Registration", RegistrationView.as_view(), name='Registration'),
 ]

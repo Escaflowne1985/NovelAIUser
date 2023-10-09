@@ -61,6 +61,15 @@ def Home(request):
     return render(request, 'base.html', locals())
 
 
+# 用户注册
+class RegistrationView(View):
+    def post(self, request):
+        user_name = request.POST.get('user_name')
+        msg = registration(user_name)
+        print(msg)
+        return render(request, 'base.html', locals())
+
+
 # LoRA人物配置
 class New_Step_1_View(View):
     def get(self, request):

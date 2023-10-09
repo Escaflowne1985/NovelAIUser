@@ -39,7 +39,7 @@ class Task(models.Model):
         verbose_name="lora 配置", help_text="不懂尽量不要动", blank=True, null=True
     )
     content_start = models.CharField(
-        max_length=200, default="", blank=True, null=True,
+        max_length=200, default="###", blank=True, null=True,
         verbose_name="开头文案", help_text="黄金5秒开头文案"
     )
     content_start_json = models.TextField(

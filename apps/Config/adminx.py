@@ -33,7 +33,6 @@ class GlobalSettings(object):
         )}
         ChatGPTMenu = {'title': 'ChatGPT 配置', 'menus': (
             {'title': 'ChatGPT信息', 'icon': 'fa fa-user-o', 'url': self.get_model_url(ChatGPT, 'changelist')},
-            {'title': '系统环境路径', 'icon': 'fa fa-user-o', 'url': self.get_model_url(PythonEnv, 'changelist')},
             {'title': 'GPT_知数云', 'icon': 'fa fa-user-o', 'url': self.get_model_url(GPT_ZSY, 'changelist')},
             {'title': 'GPT_OPENAI', 'icon': 'fa fa-user-o', 'url': self.get_model_url(GPT_OPENAI, 'changelist')},
             {'title': 'GPT_CLOSEAI', 'icon': 'fa fa-user-o', 'url': self.get_model_url(GPT_CLOSEAI, 'changelist')},
