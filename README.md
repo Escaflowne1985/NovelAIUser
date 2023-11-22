@@ -75,6 +75,11 @@
 
 # 欢迎加入讨论组织
 
-
 QQ群：670870515
+
+
+
+# 欢迎老爷们打赏
+
+![在这里插入图片描述](https://photogz.photo.store.qq.com/psc?/V13uuYuJ2n1EXp/6tCTPh7N*X6CBkvkDvKlZdRlyOZUalGBa6OiMNI1ew5epvOSMqsmfK2Yy80FwZ8x2*LHrZPNckEjaKxgapEsSC4UNhv3*crg9aqVO0LsLRM!/b&bo=yAEvAgAAAAABB8Q!&rf=viewer_4)
 
