@@ -1,8 +1,6 @@
 db.sqlite3
 *.pyc
 *.wav
-apps/Utils/pyx 
-apps/Utils/script
 MovieProcess/models
 MovieProcess/base
 MovieProcess/result
