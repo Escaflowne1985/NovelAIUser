@@ -1,6 +1,11 @@
 # 软件介绍
 
-软件免费注册即可用，消耗类例如TTS和GPT等需要自行准备，或进群咨询。
+本软件停止更新，准备使用DearPyGUI制作全新的AI工作，后续敬请期待。代码完开源，有能力的小伙伴自行修改。
+
+本软件已申请软著
+
+
+![在这里插入图片描述](https://github.com/Escaflowne1985/MyScriptPublic/blob/master/My%20Article%20MD/My%20Certificate/%E8%BD%AF%E4%BB%B6%E8%91%97%E4%BD%9C/NovelAI%E6%96%87%E7%94%9F%E5%9B%BE%EF%BC%8C%E8%A7%86%E9%A2%91%E5%85%8B%E9%9A%86%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E8%BD%AF%E4%BB%B6.jpg)
 
 # 软件介绍
 
